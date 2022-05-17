@@ -4,8 +4,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps: 
-      - run: make setup
-      - run: make install
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v16
       - name: run tests
         run: make test
       - name: run lint
