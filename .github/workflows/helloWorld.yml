@@ -8,8 +8,13 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16
+          cache: 'npm'
       - run: npm install
       - name: run tests
         run: make test
       - name: run lint
         run: make lint
+      - name: run snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.BIG_BOOBA }}
